@@ -1,0 +1,17 @@
+<h1>Secrets</h1>
+<p>Post anonymous secrets! Nobody will know it was you...</p>
+
+<h3>Log In</h3>
+<% if flash[:errors] %>
+	<p><%= flash[:errors] %></p>
+<% end %>
+<form method='post' action='/sessions/create'>
+	<input type='hidden' value='<%= form_authenticity_token %>' name='authenticity_token'>
+	<label>Email</label>
+	<input type='text' name="email">
+	<label>Password</label>
+	<input type='password' name='password'>
+	<input type='submit' value='Log In'>
+</form>
+
+<a href="/users/new">Sign Up</a>

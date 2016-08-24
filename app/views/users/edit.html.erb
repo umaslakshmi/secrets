@@ -1,0 +1,20 @@
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<p><%= error %></p>
+	<% end %>
+<% end %>
+<form method='post' action='/users/<%= @user.id %>'>
+	<input type='hidden' value='<%= form_authenticity_token %>' name='authenticity_token'>
+	<input type='hidden' name='_method' value='patch'>
+	<label>Email</label>
+	<input type='text' name='user[email]' value='<%= @user.email %>'>
+	<label>Name</label>
+	<input type='text' name='user[name]' value='<%= @user.name %>'>
+	<input type='submit' value='Update'>
+</form>
+<form method='post' action='/users/<%= @user.id %>'>
+	<input type='hidden' value='<%= form_authenticity_token %>' name='authenticity_token'>
+	<input type='hidden' name='_method' value='delete'>
+	<input type='submit' value='Delete Account'>
+</form>
+<%= link_to "Back", :back %>
